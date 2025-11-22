@@ -1,11 +1,20 @@
 package tp7;
 
+import java.util.ArrayList;
+import java.util.List;
 import tp7.katas.kata1.Auto;
 import tp7.katas.kata1.Vehiculo;
 import tp7.katas.kata2.Circulo;
 import tp7.katas.kata2.Figura;
 import tp7.katas.kata2.Rectangulo;
 import tp7.katas.kata2.Triangulo;
+import tp7.katas.kata3.Empleado;
+import tp7.katas.kata3.EmpleadoPlanta;
+import tp7.katas.kata3.EmpleadoTemporal;
+import tp7.katas.kata4.Animal;
+import tp7.katas.kata4.Gato;
+import tp7.katas.kata4.Perro;
+import tp7.katas.kata4.Vaca;
 
 /**
  *
@@ -36,9 +45,56 @@ public class Main {
         
         System.out.println("Kata III\n");
         
+        Empleado[] empleados = new Empleado[5];
+        empleados[0] = new EmpleadoPlanta(160, "Fulano", 7000);
+        empleados[1] = new EmpleadoTemporal("Juan", 7500);
+        empleados[2] = new EmpleadoPlanta(120, "Ana", 7500);
+        empleados[3] = new EmpleadoTemporal("María", 7500);
+        empleados[4] = new EmpleadoPlanta(160, "Raúl", 8000);
+        
+        System.out.println("Se crean los siguientes empleados:");
+        for(Empleado e : empleados) {
+            System.out.println();
+            System.out.println(e);
+            e.calcularSueldo(120);
+        }
+        
+        System.out.println("\nSe clasifican los empleados:\n");
+        List<Empleado> empleadosPlanta = new ArrayList<>();
+        List<Empleado> empleadosTemporales = new ArrayList<>();
+        
+        for (Empleado empleado : empleados) {
+            if (empleado instanceof EmpleadoPlanta) {
+                empleadosPlanta.add(empleado);
+            }
+            if (empleado instanceof EmpleadoTemporal) {
+                empleadosTemporales.add(empleado);
+            }
+        }
+        
+        System.out.println("Empleados de planta:");
+        for (Empleado e : empleadosPlanta) {
+            System.out.println(e);
+        }
+        System.out.println();
+        System.out.println("Empleados de temporales:");
+        for (Empleado e : empleadosTemporales) {
+            System.out.println(e);
+        }
         
         System.out.println("\nKata IV\n");
         
+        Animal[] animales = new Animal[3];
+        animales[0] = new Vaca();
+        animales[1] = new Perro();
+        animales[2] = new Gato();
+        
+        for (Animal animal : animales) {
+            System.out.println(animal + ":");
+            animal.hacerSonido();
+            animal.describirAnimal();
+            System.out.println();
+        }
     }
     
 }
